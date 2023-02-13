@@ -19,6 +19,8 @@ namespace PST
     struct Line
     {
         Point begin, end;
+
+        Line(const Point& _begin, const Point& _end) : begin(_begin), end(_end) { }
     };
 
     bool hasIntersection(const Line& _1, const Line& _2);

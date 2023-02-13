@@ -23,6 +23,9 @@ bool PST::hasIntersection(const Line& _1, const Line& _2)
     float k2 = vec2.y / vec2.x;
     float b2 = _2.end.y - k2 * _2.end.x;
 
+    if(floats_are_equal(k1, 0.0f) && floats_are_equal(k2, 0.0f))
+        return (number_is_in_bounds(_1.begin.x, _2.begin.x, _2.end.x) || number_is_in_bounds(_1.end.x, _2.begin.x, _2.end.x)) && floats_are_equal(_1.begin.y, _2.begin.y);
+
     //  intersection point
     float x_x = (b2 - b1) / (k1 - k2);
     float x_y = k1 * x_x + b1;
