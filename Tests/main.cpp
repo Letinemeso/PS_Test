@@ -64,5 +64,125 @@ int main()
     TEST_CASE_TRUE_3ARG(square_geometrical_data_test, 3.0f, 9.0f, 12.0f);
     TEST_CASE_TRUE_3ARG(square_geometrical_data_test, 12.0f, 144.0f, 48.0f);
 
+    LV::Type_Manager::register_type("float", {
+                                        [](const std::string& _val)
+                                        {
+                                            if(_val == ".")
+                                            return false;
+
+                                            unsigned int dots_count = 0;
+                                            unsigned int i=0;
+                                            if(_val[0] == '+' || _val[0] == '-')
+                                            ++i;
+                                            for(; i<_val.size(); ++i)
+                                            {
+                                                if(_val[i] == '.')
+                                                {
+                                                    ++dots_count;
+                                                    continue;
+                                                }
+                                                if(_val[i] < '0' || _val[i] > '9')
+                                                return false;
+                                            }
+
+                                            if(dots_count > 1)
+                                            return false;
+
+                                            return true;
+                                        },
+                                        [](void* _variable_vptr, const LDS::Vector<std::string>& _values_as_string) { *((float*)_variable_vptr) = std::stof(_values_as_string[0]); }
+                                    });
+    LV::Type_Manager::register_type("PST::Point", {
+                                        [](const std::string& _val)
+                                        {
+                                            if(_val == ".")
+                                            return false;
+
+                                            unsigned int dots_count = 0;
+                                            unsigned int i=0;
+                                            if(_val[0] == '+' || _val[0] == '-')
+                                            ++i;
+                                            for(; i<_val.size(); ++i)
+                                            {
+                                                if(_val[i] == '.')
+                                                {
+                                                    ++dots_count;
+                                                    continue;
+                                                }
+                                                if(_val[i] < '0' || _val[i] > '9')
+                                                return false;
+                                            }
+
+                                            if(dots_count > 1)
+                                            return false;
+
+                                            return true;
+                                        },
+                                        [](void* _variable_vptr, const LDS::Vector<std::string>& _values_as_string)
+                                        {
+                                            ((PST::Point*)_variable_vptr)->x = std::stof(_values_as_string[0]);
+                                            ((PST::Point*)_variable_vptr)->y = std::stof(_values_as_string[1]);
+                                        }
+                                    });
+
+
+
+
+    PST::Circle circle;
+    circle.set_radius(1.0f);
+    circle.deserialize("circle", "../circle");
+
+    PST::Triangle triangle;
+    std::vector<PST::Point> _points({ PST::Point(0.0f, 0.0f), PST::Point(5.0f, 0.0f), PST::Point(0.0f, 5.0f) });
+    triangle.set_points(_points[0], _points[1], _points[2]);
+    triangle.deserialize("triangle", "../triangle");
+
+    PST::Square square;
+    square.set_side_size(1.0f);
+    square.deserialize("square", "../square");
+
+
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

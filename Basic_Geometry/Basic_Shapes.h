@@ -34,8 +34,8 @@ namespace PST
         inline float perimeter() const { return m_perimeter; }
 
     public:
-//        virtual void serialize(const std::string& _name, const std::string& _path) = 0;
-//        virtual void deserialize(const std::string& _name, const std::string& _path) = 0;
+        virtual void serialize(const std::string& _name, const std::string& _path) = 0;
+        void deserialize(const std::string& _name, const std::string& _path);
 
     };
 
@@ -53,6 +53,9 @@ namespace PST
 
     public:
         void set_radius(float _radius);
+
+    public:
+        void serialize(const std::string &_name, const std::string &_path) override;
 
     };
 
@@ -73,6 +76,9 @@ namespace PST
     public:
         void set_points(const Point& _1, const Point& _2, const Point& _3);
 
+    public:
+        void serialize(const std::string &_name, const std::string &_path) override;
+
     };
 
 
@@ -89,6 +95,9 @@ namespace PST
 
     public:
         void set_side_size(float _side_size);
+
+    public:
+        void serialize(const std::string &_name, const std::string &_path) override;
 
     };
 
