@@ -1,6 +1,8 @@
 #ifndef BASIC_SHAPES_H
 #define BASIC_SHAPES_H
 
+#include <Variable_Base.h>
+
 #include "Basic_Geometry.h"
 
 
@@ -9,8 +11,11 @@ namespace PST
 
     constexpr float PI = 3.141592653589793;
 
-    class Basic_Shape
+    class Basic_Shape : public LV::Variable_Base
     {
+    public:
+        DECLARE_VARIABLE;
+
     private:
         Point m_position;
 
@@ -28,11 +33,18 @@ namespace PST
         inline float area() const { return m_area; }
         inline float perimeter() const { return m_perimeter; }
 
+    public:
+//        virtual void serialize(const std::string& _name, const std::string& _path) = 0;
+//        virtual void deserialize(const std::string& _name, const std::string& _path) = 0;
+
     };
 
 
     class Circle : public Basic_Shape
     {
+    public:
+        DECLARE_VARIABLE;
+
     private:
         float m_radius = 0.0f;
 
@@ -47,8 +59,13 @@ namespace PST
 
     class Triangle : public Basic_Shape
     {
+    public:
+        DECLARE_VARIABLE;
+
     private:
-        Point m_points[3];
+        Point m_point_1;
+        Point m_point_2;
+        Point m_point_3;
 
     private:
         void M_calculate_geometrical_data() override;
@@ -61,6 +78,9 @@ namespace PST
 
     class Square : public Basic_Shape
     {
+    public:
+        DECLARE_VARIABLE;
+
     private:
         float m_side_size = 0.0f;
 

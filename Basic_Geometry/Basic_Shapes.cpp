@@ -3,6 +3,16 @@
 using namespace PST;
 
 
+INIT_FIELDS(PST::Basic_Shape, LV::Variable_Base)
+ADD_FIELD("PST::Point", m_position)
+FIELDS_END
+
+
+INIT_FIELDS(PST::Circle, PST::Basic_Shape)
+ADD_FIELD("float", m_radius)
+FIELDS_END
+
+
 void Circle::M_calculate_geometrical_data()
 {
     m_area = PI * m_radius * m_radius;
@@ -21,31 +31,43 @@ void Circle::set_radius(float _radius)
 
 
 
+INIT_FIELDS(PST::Triangle, PST::Basic_Shape)
+ADD_FIELD("PST::Point", m_point_1)
+ADD_FIELD("PST::Point", m_point_2)
+ADD_FIELD("PST::Point", m_point_3)
+FIELDS_END
+
+
 void Triangle::M_calculate_geometrical_data()
 {
     m_area = 0.5f
-            * segment_length(m_points[0], m_points[1])
-            * segment_length(m_points[0], m_points[2])
-            * sin_between_vectors(m_points[1] - m_points[0], m_points[2] - m_points[0]);
+            * segment_length(m_point_1, m_point_2)
+            * segment_length(m_point_1, m_point_3)
+            * sin_between_vectors(m_point_2 - m_point_1, m_point_3 - m_point_1);
 
-    m_perimeter = segment_length(m_points[0], m_points[1])
-            + segment_length(m_points[1], m_points[2])
-            + segment_length(m_points[2], m_points[0]);
+    m_perimeter = segment_length(m_point_1, m_point_2)
+            + segment_length(m_point_2, m_point_3)
+            + segment_length(m_point_3, m_point_1);
 }
 
 
 
 void Triangle::set_points(const Point& _1, const Point& _2, const Point& _3)
 {
-    m_points[0] = _1;
-    m_points[1] = _2;
-    m_points[2] = _3;
+    m_point_1 = _1;
+    m_point_2 = _2;
+    m_point_3 = _3;
 
     M_calculate_geometrical_data();
 }
 
 
 
+
+
+INIT_FIELDS(PST::Square, PST::Basic_Shape)
+ADD_FIELD("float", m_side_size)
+FIELDS_END
 
 
 void Square::M_calculate_geometrical_data()

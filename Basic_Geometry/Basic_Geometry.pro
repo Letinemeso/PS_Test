@@ -11,3 +11,7 @@ SOURCES += \
 HEADERS += \
 	Basic_Geometry.h \
 	Basic_Shapes.h
+
+INCLUDEPATH += \
+	"../../L_Variable/include" \
+	"../../Utility/include"
