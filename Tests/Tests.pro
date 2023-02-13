@@ -4,7 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 LIBS += \
-	"../Basic_Geometry/Build/libPS_Test.a"
+	"../../Basic_Geometry/Build/libPS_Test.a"
 
 SOURCES += \
 	main.cpp
