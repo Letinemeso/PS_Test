@@ -127,19 +127,29 @@ int main()
 
 
 
-
     PST::Circle circle;
     circle.set_radius(1.0f);
-    circle.deserialize("circle", "../circle");
+    circle.serialize("circle", "../circle");
 
     PST::Triangle triangle;
     std::vector<PST::Point> _points({ PST::Point(0.0f, 0.0f), PST::Point(5.0f, 0.0f), PST::Point(0.0f, 5.0f) });
     triangle.set_points(_points[0], _points[1], _points[2]);
-    triangle.deserialize("triangle", "../triangle");
+    triangle.serialize("triangle", "../triangle");
 
     PST::Square square;
     square.set_side_size(1.0f);
-    square.deserialize("square", "../square");
+    square.serialize("square", "../square");
+
+
+    PST::Circle circle_2;
+    circle_2.deserialize("circle", "../circle");
+
+    PST::Triangle triangle_2;
+    triangle_2.set_points(_points[0], _points[1], _points[2]);
+    triangle_2.deserialize("triangle", "../triangle");
+
+    PST::Square square_2;
+    square_2.deserialize("square", "../square");
 
 
     return 0;
