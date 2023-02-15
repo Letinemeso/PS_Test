@@ -13,6 +13,6 @@ add_library(Basic_Geometry STATIC
 target_include_directories(Basic_Geometry PUBLIC 
                             "${PROJECT_BINARY_DIR}" 
                             "${PROJECT_SOURCE_DIR}"
-                            "${PROJECT_SOURCE_DIR}/../../Utility/include"
-                            "${PROJECT_SOURCE_DIR}/../../L_Variable/include"
+                            "${PROJECT_SOURCE_DIR}/../Utility/include"
+                            "${PROJECT_SOURCE_DIR}/../L_Variable/include"
                             )

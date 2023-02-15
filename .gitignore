@@ -8,3 +8,7 @@ Build/
 Makefile*
 .qmake*
 object_script*
+
+Utility/
+L_Variable/
+build/
