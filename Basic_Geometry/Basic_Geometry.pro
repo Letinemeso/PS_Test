@@ -13,5 +13,5 @@ HEADERS += \
 	Basic_Shapes.h
 
 INCLUDEPATH += \
-	"../../L_Variable/include" \
-	"../../Utility/include"
+	"../L_Variable/include" \
+	"../Utility/include"
